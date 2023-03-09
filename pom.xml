@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" 
+  xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.redhat</groupId>
+  <artifactId>fuse-rest-rh</artifactId>
+  <version>0.0.1</version>
+  <properties>
+    <fuse-version>7.11.1.fuse-sb2-7_11_1-00022-redhat-00002</fuse-version>
+    <camel-version>2.23.2.fuse-7_11_1-00015-redhat-00002</camel-version>
+    <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring-version>2.1.4.RELEASE-redhat-00001</spring-version>
+    <openjdk18-openshift.version>latest</openjdk18-openshift.version>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+  </properties>
+  <packaging>jar</packaging>
+  <!-- #region repos -->
+  <repositories>
+    <repository>
+      <id>red-hat-ga-repository</id>
+      <url>https://maven.repository.redhat.com/ga</url>
+    </repository>
+    <repository>
+      <id>red-hat-early-access-repository</id>
+      <url>https://maven.repository.redhat.com/earlyaccess/all</url>
+    </repository>
+    <repository>
+      <id>jboss-early-access-repository</id>
+      <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>red-hat-ga-repository</id>
+      <url>https://maven.repository.redhat.com/ga</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>red-hat-early-access-repository</id>
+      <url>https://maven.repository.redhat.com/earlyaccess/all</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>jboss-early-access-repository</id>
+      <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.redhat-fuse</groupId>
+        <artifactId>fuse-springboot-bom</artifactId>
+        <version>${fuse-version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <!-- #endregion repos -->
+  <dependencies>
+    <!-- <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web-services</artifactId>
+      <version>${spring-version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>xerces</groupId>
+          <artifactId>xercesImpl</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency> -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-properties-migrator</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>${spring-version}</version>
+      <!-- #region excl -->
+      <exclusions>
+        <exclusion>
+          <groupId>xerces</groupId>
+          <artifactId>xercesImpl</artifactId>
+        </exclusion>
+      </exclusions>
+      <!-- #endregion excl -->
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-http</artifactId>
+      <version>${camel-version}</version>
+      <!-- #region excl -->
+      <exclusions>
+        <exclusion>
+          <groupId>xerces</groupId>
+          <artifactId>xercesImpl</artifactId>
+        </exclusion>
+      </exclusions>
+      <!-- #endregion excl -->
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-netty4-http</artifactId>
+      <version>${camel-version}</version>
+      <!-- #region excl -->
+      <exclusions>
+        <exclusion>
+          <groupId>xerces</groupId>
+          <artifactId>xercesImpl</artifactId>
+        </exclusion>
+      </exclusions>
+      <!-- #endregion excl -->
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-swagger-java</artifactId>
+      <version>${camel-version}</version>
+      <!-- #region excl -->
+      <exclusions>
+        <exclusion>
+          <groupId>xerces</groupId>
+          <artifactId>xercesImpl</artifactId>
+        </exclusion>
+      </exclusions>
+      <!-- #endregion excl -->
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-saxon-starter</artifactId>
+      <version>${camel-version}</version>
+      <!-- #region excl -->
+      <exclusions>
+        <exclusion>
+          <groupId>xerces</groupId>
+          <artifactId>xercesImpl</artifactId>
+        </exclusion>
+      </exclusions>
+      <!-- #endregion excl -->
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-xmljson</artifactId>
+      <version>${camel-version}</version>
+      <!-- #region excl -->
+      <exclusions>
+        <exclusion>
+          <groupId>xerces</groupId>
+          <artifactId>xercesImpl</artifactId>
+        </exclusion>
+      </exclusions>
+      <!-- #endregion excl -->
+    </dependency>
+    <dependency>
+      <groupId>xom</groupId>
+      <artifactId>xom</artifactId>
+      <version>1.2.5</version>
+      <!-- #region excl -->
+      <exclusions>
+        <exclusion>
+          <groupId>xerces</groupId>
+          <artifactId>xercesImpl</artifactId>
+        </exclusion>
+      </exclusions>
+      <!-- #endregion excl -->
+    </dependency>
+  </dependencies>
+  <build>
+    <defaultGoal>spring-boot:run</defaultGoal>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.jboss.redhat-fuse</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${fuse-version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
